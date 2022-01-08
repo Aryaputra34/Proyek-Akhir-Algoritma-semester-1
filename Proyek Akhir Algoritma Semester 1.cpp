@@ -99,33 +99,34 @@ bool loginmember(){
 
 void menu(){
 	
-	cout<<"\t\t\t<<===================================================================>>\n";  
-	cout<<"\t\t\t||                       WARUNG MAKAN KINGSLAIVE                     ||\n";  
-	cout<<"\t\t\t<<===================================================================>>\n\n";  
+	cout<<"\t\t\t<<=====================================================================>>\n";  
+	cout<<"\t\t\t  ||                     WARUNG MAKAN KINGSLAIVE                     ||\n";  
+	cout<<"\t\t\t<<=====================================================================>>\n\n";  
    
-
+ 
+	cout<<"\t\t\t  =====================================================================\n";  
+	cout<<"\t\t\t  || \t\t\tMinuman           	   || 	  Harga      ||\n";  
+	cout<<"\t\t\t  =====================================================================\n";  
+	cout<<"\t\t\t  || 1) Aqua botol    \t\t\t 	   || Rp   3000,-    ||\n";  
+	cout<<"\t\t\t  || 2) Coca Cola     \t\t\t 	   || Rp   4000,-    ||\n";  
+	cout<<"\t\t\t  || 3) Es Teh        \t\t\t	   || Rp   3500,-    ||\n";  
+	cout<<"\t\t\t  || 4) Pulpy Oranges \t\t\t 	   || Rp   5000,-    ||\n";  
+	cout<<"\t\t\t  =====================================================================\n";
    
-	cout<<"- Masukkan SKU item <spasi> jumlah item\n";  
-	cout<<"- Contoh: 1 2\n";  
-	cout<<"- Ketik 0 <spasi> 0\n";  
-	cout<<"jika sudah selesai\n\n";  
-	cout<<"==============================================================\n";  
-	cout<<"|| Minuman          \t\t 	 || 	Harga     ||\n";  
-	cout<<"==============================================================\n";  
-	cout<<"|| 1) Aqua botol    \t\t 	 || Rp   3000,-   ||\n";  
-	cout<<"|| 2) Coca Cola     \t\t 	 || Rp   4000,-   ||\n";  
-	cout<<"|| 3) Es Teh        \t\t	 || Rp   3500,-   ||\n";  
-	cout<<"|| 4) Pulpy Oranges \t\t 	 || Rp   5000,-   ||\n";  
-	cout<<"==============================================================\n";
-   
-	cout<<"==============================================================\n";  
-	cout<<"|| Makanan                 \t\t || 	Harga     ||\n";  
-	cout<<"==============================================================\n";  
-	cout<<"|| 1) Nasi Tahu Tempe Telor\t\t || Rp   10000,-  ||\n";  
-	cout<<"|| 2) Nasi Kulit Crispy    \t\t || Rp   12000,-  ||\n";  
-	cout<<"|| 3) Nasi Ayam Geprek     \t\t || Rp   15000,-  ||\n";  
-	cout<<"|| 4) Nasi Steak Ayam      \t\t || Rp   25000,-  ||\n";  
-	cout<<"==============================================================\n";  
+	cout<<"\t\t\t  =====================================================================\n";  
+	cout<<"\t\t\t  || \t\t\tMakanan                    || 	  Harga      ||\n";  
+	cout<<"\t\t\t  =====================================================================\n";  
+	cout<<"\t\t\t  || 1) Nasi Tahu Tempe Telor\t\t\t   || Rp   10000,-   ||\n";  
+	cout<<"\t\t\t  || 2) Nasi Kulit Crispy    \t\t\t   || Rp   12000,-   ||\n";  
+	cout<<"\t\t\t  || 3) Nasi Ayam Geprek     \t\t\t   || Rp   15000,-   ||\n";  
+	cout<<"\t\t\t  || 4) Nasi Steak Ayam      \t\t\t   || Rp   25000,-   ||\n";  
+	cout<<"\t\t\t<<=====================================================================>>\n";  
+	
+	cout<<"\nPETUNJUK!!!\n";
+	cout<<"- Masukkan Nomor di menu <enter> kemudian masukkan jumlahnya\n";  
+	cout<<"- Contoh: \n\tPesan minuman : 1\n\tJumlah : 2\n";  
+	cout<<"- Ketik 0 <enter> 0\n";  
+	cout<<"jika sudah selesai\n\n"; 
 }
 
 void beli(int choice){
@@ -135,12 +136,18 @@ void beli(int choice){
 	int jml1,jml2,kode1,kode2;
 	  
 	do {  
+		balik1:
 		cout<<"Pesanan Minuman : ";  
-    	cin>>kode1>>jml1;  
+    	cin>>kode1;
+    	cout<<"Jumlah : ";
+		cin>>jml1;  
+		cout<<endl;
      
-    	if (kode1 > 4){
-			break;
-	 	}	 
+    	if (kode1 > 4 ){
+			goto balik1;
+	 	}else if(kode1 <=0 && jml1 > 0){
+	 		goto balik1;
+		 }
 			total_minuman += (minuman[(kode1-1)]) * jml1;
 			
 		} while (kode1 != 0 && jml1 !=0);  
@@ -148,15 +155,21 @@ void beli(int choice){
 	cout<<"\n\t\t\tTOTAL HARGA MINUMAN: Rp."<< total_minuman<<endl;  
    
 	do {  
+		balik2:
 		cout<<"Pesanan Makanan : ";  
-		cin>>kode2>>jml2;
+		cin>>kode2;
+		cout<<"Jumlah : ";
+		cin>>jml2;
+		cout<<endl;
 			
-		if (kode2 > 4){
-			break;
-		}  
+		if (kode2 > 4 ){
+			goto balik2;
+		}else if(kode2 <=0 && jml2 > 0){
+			goto balik2;
+		}
 		total_makanan += (makanan[(kode2-1)]) * jml2;
 		      		
-		} while (kode2 != 0 && jml2 !=0  );  
+		} while (kode2 != 0 && jml2 !=0);  
    		
 	cout<<"\n\t\t\tTOTAL HARGA MAKANAN: Rp."<< total_makanan<<endl<<endl;
 		
